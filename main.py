@@ -26,7 +26,7 @@ class KBTest(unittest.TestCase):
         print(' Asking if', ask1)
         answer = self.KB.kb_ask(ask1)
         self.assertFalse(answer)
-    #checking if git works
+
     def test3(self):
         ask1 = read.parse_input("fact: (color ?X red)")
         print(' Asking if', ask1)
