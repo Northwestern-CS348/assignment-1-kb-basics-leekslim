@@ -24,6 +24,11 @@ class KnowledgeBase(object):
             fact (Fact or Rule): Fact or Rule we're asserting in the format produced by read.py
         """
         print("Asserting {!r}".format(fact))
+        # first, check if already in list; main.py setup already checks if it is a fact
+        if fact not in self.facts:
+            self.facts.append(fact)
+        else:
+            print("fact already asserted, you fool!")
         
     def kb_ask(self, fact):
         """Ask if a fact is in the KB
