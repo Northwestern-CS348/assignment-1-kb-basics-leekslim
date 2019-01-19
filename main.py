@@ -14,7 +14,6 @@ class KBTest(unittest.TestCase):
             if isinstance(item, Fact):
                 self.KB.kb_assert(item)
         
-
     def test1(self):
         ask1 = read.parse_input("fact: (color bigbox red)")
         print(' Asking if', ask1)
@@ -35,7 +34,6 @@ class KBTest(unittest.TestCase):
         self.assertEqual(str(answer[0]), "?X : bigbox")
         self.assertEqual(str(answer[1]), "?X : pyramid3")
         self.assertEqual(str(answer[2]), "?X : pyramid4")
-        
 
     def test4(self):
         ask1 = read.parse_input("fact: (color bigbox ?Y)")
