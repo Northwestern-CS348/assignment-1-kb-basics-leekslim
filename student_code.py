@@ -40,3 +40,19 @@ class KnowledgeBase(object):
             ListOfBindings|False - ListOfBindings if result found, False otherwise
         """
         print("Asking {!r}".format(fact))
+        answers_list = ListOfBindings()
+        # see if just asking for an exact fact
+        if (not is_var(fact.statement.terms[0])) and (not is_var(fact.statement.terms[1])):
+            if fact in self.facts:
+                return answers_list
+            else:
+                return False
+        # otherwise iterate through kb list of facts to find a match to all variables
+        for assertion in self.facts:
+            answer = match(fact, assertion)
+            if answer:
+                answers_list.append(answer)
+        if answers_list:
+            return answers_list
+        else:
+            return False
