@@ -13,6 +13,13 @@ class KBTest(unittest.TestCase):
         for item in data:
             if isinstance(item, Fact):
                 self.KB.kb_assert(item)
+
+        # Assert kb2 facts, added by me
+        file = 'statements_kb2.txt'
+        data = read.read_tokenize(file)
+        for item in data:
+            if isinstance(item, Fact):
+                self.KB.kb_assert(item)
         
     def test1(self):
         ask1 = read.parse_input("fact: (color bigbox red)")
@@ -51,7 +58,20 @@ class KBTest(unittest.TestCase):
         self.assertEqual(str(answer[3]), "?X : pyramid2, ?Y : green")
         self.assertEqual(str(answer[4]), "?X : pyramid3, ?Y : red")
         self.assertEqual(str(answer[5]), "?X : pyramid4, ?Y : red")
-        
+
+    """below are my own tests, based on kb2"""
+    def test6(self):
+        ask2 = read.parse_input("fact: (needs ?D ?E)")
+        print(' Asking if', ask2)
+        answer = self.KB.kb_ask(ask2)
+        self.assertEqual(str(answer[0]), "?D : Sarorah, ?E : Loot")
+
+    def test7(self):
+        ask2 = read.parse_input("fact: (hero ?E)")
+        print(' Asking if', ask2)
+        answer = self.KB.kb_ask(ask2)
+        self.assertEqual(str(answer[0]), "?E : Ai")
+
 
 if __name__ == '__main__':
     unittest.main()
